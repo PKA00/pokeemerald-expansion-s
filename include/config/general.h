@@ -86,4 +86,7 @@
 // Naming Screen
 #define AUTO_LOWERCASE_KEYBOARD      GEN_LATEST  // Starting in GEN_6, after entering the first uppercase character, the keyboard switches to lowercase letters.
 
+// Start Menu Clock
+#define B_START_MENU_CLOCK            TRUE    // If TRUE, shows the current time in a small window on the Start Menu.
+#define B_START_MENU_CLOCK_24_HR      FALSE   // If TRUE, time is shown in 24-hour format. Otherwise 12-hour with AM/PM.
 #endif // GUARD_CONFIG_GENERAL_H
