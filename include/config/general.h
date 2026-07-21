@@ -80,7 +80,7 @@
 #define UNITS_IMPERIAL               0       // Inches, feet, pounds
 #define UNITS_METRIC                 1       // meters, kilograms
 
-#define UNITS                        UNITS_IMPERIAL
+#define UNITS                        UNITS_METRIC
 #define CHAR_DEC_SEPARATOR           CHAR_PERIOD // CHAR_PERIOD is used as a decimal separator only in the UK and the US. The rest of the world uses CHAR_COMMA.
 
 // Naming Screen
@@ -88,5 +88,5 @@
 
 // Start Menu Clock
 #define B_START_MENU_CLOCK            TRUE    // If TRUE, shows the current time in a small window on the Start Menu.
-#define B_START_MENU_CLOCK_24_HR      FALSE   // If TRUE, time is shown in 24-hour format. Otherwise 12-hour with AM/PM.
+#define B_START_MENU_CLOCK_24_HR      TRUE    // If TRUE, time is shown in 24-hour format. Otherwise 12-hour with AM/PM.
 #endif // GUARD_CONFIG_GENERAL_H

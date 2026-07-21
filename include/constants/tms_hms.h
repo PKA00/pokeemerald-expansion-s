@@ -101,27 +101,7 @@
     F(ICE_SPINNER) \
     F(ECHOED_VOICE) \
     F(GIGA_IMPACT) \
-    F(NATURAL_GIFT) \
-    F(NATURE_POWER) \
-    F(RECYCLE) \
-    F(ROUND) \
-    F(SAFEGUARD) \
-    F(TERA_BLAST) \
-    F(WORK_UP) \
-    F(POISON_JAB) \
-    F(SLUDGE_WAVE) \
-    F(VENOSHOCK) \
-    F(PSYCHIC_NOISE) \
-    F(STORED_POWER) \
-    F(TRICK_ROOM) \
-    F(STONE_EDGE) \
-    F(WIDE_GUARD) \
-    F(FLASH_CANNON) \
-    F(GYRO_BALL) \
-    F(SMART_STRIKE) \
-    F(BRINE) \
-    F(CHILLING_WATER) \
-    F(FLIP_TURN)
+    F(NATURAL_GIFT)
 
 #define FOREACH_HM(F) \
     F(CUT) \
