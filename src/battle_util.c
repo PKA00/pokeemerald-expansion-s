@@ -7284,6 +7284,13 @@ static uq4_12_t GetWeatherDamageModifier(struct DamageContext *ctx)
         return (ctx->moveType == TYPE_FIRE) ? UQ_4_12(0.5) : UQ_4_12(1.5);
     }
 
+    if (ctx->weather & B_WEATHER_SANDSTORM || attackerWeather & B_WEATHER_SANDSTORM)
+    {
+        if (ctx->moveType != TYPE_ROCK)
+            return UQ_4_12(1.0);
+        return UQ_4_12(1.5);
+    }
+
     return UQ_4_12(1.0);
 }
 
