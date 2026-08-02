@@ -733,6 +733,36 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleFactoryStyle = FACTORY_STYLE_HIGH_RISK,
     },
 
+    [EFFECT_QUICKSAND] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 1,
+    },
+
+    [EFFECT_RAIN_BLOOM] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 1,
+    },
+
+    [EFFECT_SWARM_WAVE] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 1,
+    },
+
+    [EFFECT_PRECIPICE_BLADES] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 1,
+    },
+
+    [EFFECT_IRON_BLAZE] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 1,
+    },
+
     [EFFECT_FOCUS_PUNCH] =
     {
         .battleScript = BattleScript_EffectHit,

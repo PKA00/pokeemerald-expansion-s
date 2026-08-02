@@ -2248,7 +2248,7 @@ bool32 CanAbilityAbsorbMove(struct DamageContext *ctx)
             battleScript = AbsorbedByStatIncreaseAbility(ctx, STAT_ATK, 1);
         break;
     case ABILITY_FLASH_FIRE:
-        if (ctx->moveType == TYPE_FIRE && (B_FLASH_FIRE_FROZEN >= GEN_5 || !(gBattleMons[ctx->battlerDef].status1 & STATUS1_FREEZE)))
+        if ((ctx->moveType == TYPE_FIRE || ctx->move == MOVE_IRON_BLAZE) && (B_FLASH_FIRE_FROZEN >= GEN_5 || !(gBattleMons[ctx->battlerDef].status1 & STATUS1_FREEZE)))
             battleScript = AbsorbedByFlashFire(ctx);
         break;
     case ABILITY_SOUNDPROOF:
@@ -6405,6 +6405,30 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
     case EFFECT_FACADE:
         if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE))
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_QUICKSAND:
+        if (gBattleWeather & B_WEATHER_SANDSTORM)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_RAIN_BLOOM:
+        if (gBattleWeather & B_WEATHER_RAIN)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_SWARM_WAVE:
+        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
+    case EFFECT_PRECIPICE_BLADES:
+        if (gBattleWeather & B_WEATHER_SUN)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
+    case EFFECT_COLLISION_COURSE:
+        if (gBattleWeather & B_WEATHER_SUN)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
+    case EFFECT_IRON_BLAZE:
+        if (gBattleWeather & B_WEATHER_SUN)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case EFFECT_BRINE:
         if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP / 2))
