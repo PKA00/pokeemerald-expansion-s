@@ -70,6 +70,10 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
 
         if (B_CHARGE < GEN_9 && gBattleMons[i].volatiles.chargeTimer > 0)
             gBattleMons[i].volatiles.chargeTimer--;
+        if (B_CHARGE < GEN_9 && gBattleMons[i].volatiles.bugChargeTimer > 0)
+            gBattleMons[i].volatiles.bugChargeTimer--;
+        if (B_CHARGE < GEN_9 && gBattleMons[i].volatiles.poisonChargeTimer > 0)
+            gBattleMons[i].volatiles.poisonChargeTimer--;
 
         if (gBattleMons[i].volatiles.laserFocusTimer > 0 && --gBattleMons[i].volatiles.laserFocusTimer == 0)
             gBattleMons[i].volatiles.laserFocus = FALSE;

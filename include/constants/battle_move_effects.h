@@ -108,7 +108,7 @@ enum  BattleMoveEffects
     EFFECT_RAIN_BLOOM,
     EFFECT_SWARM_WAVE,
     EFFECT_PRECIPICE_BLADES,
-    EFFECT_IRON_BLAZE,
+    EFFECT_IRON_HEAT,
     EFFECT_FOCUS_PUNCH,
     EFFECT_DOUBLE_POWER_ON_ARG_STATUS,
     EFFECT_FOLLOW_ME,
@@ -292,6 +292,8 @@ enum  BattleMoveEffects
     EFFECT_CEASELESS_EDGE, // Same applies to spikes
     EFFECT_SPECIES_POWER_OVERRIDE, // Uses argument field to for the species, power and (number of hits, used only for multi hit moves)
     EFFECT_SCALE_SHOT,
+    EFFECT_EXOSHELL,
+    EFFECT_TOXIC_SPECTRUM,
     NUM_BATTLE_MOVE_EFFECTS,
 };
 

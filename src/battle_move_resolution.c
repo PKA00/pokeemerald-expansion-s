@@ -4784,6 +4784,32 @@ static enum MoveResult StatChangeBeforeChange(struct BattleCalcValues *cv)
             return MOVE_RESULT_FAILURE;
         }
         break;
+    case EFFECT_EXOSHELL:
+        if (WillAnyStatChange() || gBattleMons[cv->battlerAtk].volatiles.bugChargeTimer == 0)
+        {
+            gBattleMons[cv->battlerAtk].volatiles.bugChargeTimer = 2;
+            BattleScriptCall(BattleScript_PlayMoveAnim);
+            return MOVE_RESULT_RUN_SCRIPT_INCREMENT;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = BattleScript_StatChangeFailed;
+            return MOVE_RESULT_FAILURE;
+        }
+        break;
+    case EFFECT_TOXIC_SPECTRUM:
+        if (WillAnyStatChange() || gBattleMons[cv->battlerAtk].volatiles.poisonChargeTimer == 0)
+        {
+            gBattleMons[cv->battlerAtk].volatiles.poisonChargeTimer = 2;
+            BattleScriptCall(BattleScript_PlayMoveAnim);
+            return MOVE_RESULT_RUN_SCRIPT_INCREMENT;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = BattleScript_StatChangeFailed;
+            return MOVE_RESULT_FAILURE;
+        }
+        break;
     }
 
     #define MOVE_RESULT_HANDLE_FAILURE (MOVE_RESULT_MISSED | MOVE_RESULT_MIRROR_ARMOR_PENDING | MOVE_RESULT_ATTEMPT_STAT_CHANGE | MOVE_RESULT_STAT_CHANGE_PREVENTED)
@@ -4976,11 +5002,19 @@ static void TryClearChargeVolatile(enum Type moveType)
 
     if (moveType == TYPE_ELECTRIC && gBattleMons[gBattlerAttacker].volatiles.chargeTimer == 1)
         gBattleMons[gBattlerAttacker].volatiles.chargeTimer = 0;
+    if (moveType == TYPE_BUG && gBattleMons[gBattlerAttacker].volatiles.bugChargeTimer == 1)
+        gBattleMons[gBattlerAttacker].volatiles.bugChargeTimer = 0;
+    if (moveType == TYPE_POISON && gBattleMons[gBattlerAttacker].volatiles.poisonChargeTimer == 1)
+        gBattleMons[gBattlerAttacker].volatiles.poisonChargeTimer = 0;
 
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
     {
         if (gBattleMons[battler].volatiles.chargeTimer == 2) // Has been set this turn by move or ability
             gBattleMons[battler].volatiles.chargeTimer--;
+        if (gBattleMons[battler].volatiles.bugChargeTimer == 2) // Has been set this turn by move or ability
+            gBattleMons[battler].volatiles.bugChargeTimer--;
+        if (gBattleMons[battler].volatiles.poisonChargeTimer == 2) // Has been set this turn by move or ability
+            gBattleMons[battler].volatiles.poisonChargeTimer--;
     }
 }
 

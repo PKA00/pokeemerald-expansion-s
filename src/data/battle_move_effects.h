@@ -757,7 +757,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 1,
     },
 
-    [EFFECT_IRON_BLAZE] =
+    [EFFECT_IRON_HEAT] =
     {
         .battleScript = BattleScript_EffectHit,
         .battleTvScore = 1,
@@ -790,6 +790,20 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     },
 
     [EFFECT_CHARGE] =
+    {
+        .battleScript = BattleScript_EffectStatChange,
+        .battleTvScore = 4,
+        .battleFactoryStyle = FACTORY_STYLE_PREPARATION,
+        .encourageEncore = TRUE,
+    },
+    [EFFECT_EXOSHELL] =
+    {
+        .battleScript = BattleScript_EffectStatChange,
+        .battleTvScore = 4,
+        .battleFactoryStyle = FACTORY_STYLE_PREPARATION,
+        .encourageEncore = TRUE,
+    },
+    [EFFECT_TOXIC_SPECTRUM] =
     {
         .battleScript = BattleScript_EffectStatChange,
         .battleTvScore = 4,

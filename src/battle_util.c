@@ -2291,7 +2291,7 @@ bool32 CanAbilityAbsorbMove(struct DamageContext *ctx)
             battleScript = AbsorbedByStatIncreaseAbility(ctx, STAT_ATK, 1);
         break;
     case ABILITY_FLASH_FIRE:
-        if ((ctx->moveType == TYPE_FIRE || ctx->move == MOVE_IRON_BLAZE) && (B_FLASH_FIRE_FROZEN >= GEN_5 || !(gBattleMons[ctx->battlerDef].status1 & STATUS1_FREEZE)))
+        if ((ctx->moveType == TYPE_FIRE || ctx->move == MOVE_IRON_HEAT) && (B_FLASH_FIRE_FROZEN >= GEN_5 || !(gBattleMons[ctx->battlerDef].status1 & STATUS1_FREEZE)))
             battleScript = AbsorbedByFlashFire(ctx);
         break;
     case ABILITY_SOUNDPROOF:
@@ -6469,7 +6469,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
         if (gBattleWeather & B_WEATHER_SUN)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
-    case EFFECT_IRON_BLAZE:
+    case EFFECT_IRON_HEAT:
         if (gBattleWeather & B_WEATHER_SUN)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
@@ -6518,6 +6518,10 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
     if (gSpecialStatuses[battlerAtk].gemBoost)
         modifier = uq4_12_multiply(modifier, PercentToUQ4_12AddOne(gSpecialStatuses[battlerAtk].gemParam));
     if (moveType == TYPE_ELECTRIC && gBattleMons[battlerAtk].volatiles.chargeTimer > 0)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+    if (moveType == TYPE_BUG && gBattleMons[battlerAtk].volatiles.bugChargeTimer > 0)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+    if (moveType == TYPE_POISON && gBattleMons[battlerAtk].volatiles.poisonChargeTimer > 0)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
     if (GetMoveEffect(ctx->chosenMove) == EFFECT_ME_FIRST)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
